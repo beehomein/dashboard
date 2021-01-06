@@ -1,0 +1,52 @@
+﻿<Window x:Class="DashBoard.CompanyRegistration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DashBoard"
+        mc:Ignorable="d"
+        Title="CompanyRegistration" Height="750" Width="1200">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <TextBlock Margin="0, 0, 0, 50" Text="Company Details" HorizontalAlignment="Center" FontWeight="Bold" FontSize="40" FontFamily="Agency FB" />
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Name: " Width="170" FontSize="18" />
+                <TextBox FontSize="18" Padding="10" x:Name="Name" Width="200"/>
+            </StackPanel>
+
+            <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Type: " Width="170" FontSize="18" />
+                <ComboBox Padding="10" Name="Type" Width="200" FontSize="18">
+                    <ComboBoxItem IsSelected="True" IsEnabled="False">Select Type</ComboBoxItem>
+                    <ComboBoxItem>Head Office</ComboBoxItem>
+                    <ComboBoxItem>Branch</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Mobile Number: " Width="170" FontSize="18" />
+                <TextBox FontSize="18" Padding="10" Name="Number" Width="200"/>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Email: " Width="170" FontSize="18" />
+                <TextBox Padding="10" FontSize="18" Name="Email" Width="200"/>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Address: " Width="170" FontSize="18" />
+                <TextBox Padding="10" FontSize="18" x:Name="Address" Width="200"/>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <TextBlock Padding="10" Text="Company Id: " Width="170" FontSize="18" />
+                <TextBox Padding="10" FontSize="18" Name="CompanyId" Width="200"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 0, 30">
+                <Button Cursor="Hand" Background="#FF553C1E" Foreground="White" Click="submit" FontSize="18" Padding="30,10" Margin="20">Submit</Button>
+                <Button Click="clear" Background="#FF553C1E" Foreground="White" FontSize="18" Padding="30,10" Margin="20">Clear</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

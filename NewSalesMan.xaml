@@ -1,0 +1,222 @@
+﻿<Window x:Class="DashBoard.NewSalesMan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DashBoard"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="NewSalesMan" Height="1000" Width="1200">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ClearButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="5" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FFEE6137" Offset="1"/>
+                                            <GradientStop Color="#FFD6C621" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition MinHeight="500"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Height="50" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock Text="New Sales Man"></TextBlock>
+        </Viewbox>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,20,0" HorizontalAlignment="Right">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="First Name"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="firstName"></TextBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Last Name" ></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="lastName"></TextBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Mobile Number"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="mobileNumber"></TextBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Date of Joining"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <DatePicker Width="200" x:Name="dateOfJoining"></DatePicker>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Gender"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <ComboBox Width="184" x:Name="gender">
+                        <ComboBoxItem IsSelected="True" IsEnabled="False">Select Gender</ComboBoxItem>
+                        <ComboBoxItem>Male</ComboBoxItem>
+                        <ComboBoxItem>Female</ComboBoxItem>
+                    </ComboBox>
+                </Viewbox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0" HorizontalAlignment="Left">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Email"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="email"></TextBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Date of Birth"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <DatePicker Width="200" x:Name="dateOfBirth"></DatePicker>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Id Proff Type"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <ComboBox Width="184" x:Name="IdProffType">
+                        <ComboBoxItem IsSelected="True" IsEnabled="False">Select Id Proff Type</ComboBoxItem>
+                        <ComboBoxItem>Adhar</ComboBoxItem>
+                        <ComboBoxItem>Voter ID</ComboBoxItem>
+                        <ComboBoxItem>PAN ID</ComboBoxItem>
+                    </ComboBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Id Proff Number"></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="IdProffNumber"></TextBox>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Viewbox Height="35" Margin="10" Width="200" HorizontalAlignment="Left">
+                    <TextBlock Text="Address" ></TextBlock>
+                </Viewbox>
+                <Viewbox Height="35">
+                    <TextBox Width="200" Padding="10,3" x:Name="address"></TextBox>
+                </Viewbox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
+            <Viewbox Height="50">
+                <Button Click="addNewSalesMan" Cursor="Hand" Style="{DynamicResource ClearButton}" Padding="20,5" Foreground="Black" Background="White" BorderBrush="#7F000000" BorderThickness="1">Submit
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFD0D0D0" Direction="1"></DropShadowEffect>
+                    </Button.Effect>
+
+                </Button>
+            </Viewbox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
+            <!--<Border CornerRadius="10">
+                <Border.Background>
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFEA53EA" Offset="1"/>
+                            <GradientStop Color="#FF3A26B8" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Color="#FFB8B8B8"></DropShadowEffect>
+                </Border.Effect>
+            </Border>-->
+            <Viewbox Height="50">
+                <Button Click="clearAllFields"
+                         Cursor="Hand"
+                        Padding="20,5" 
+                        Foreground="Black" 
+                        BorderBrush="#7F000000" 
+                        BorderThickness="1" 
+                        Background="White"
+                        Content="Clear" Style="{DynamicResource ClearButton}">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFD0D0D0" Direction="1"></DropShadowEffect>
+                    </Button.Effect>
+                </Button>
+            </Viewbox>
+        </StackPanel>
+    </Grid>
+</Window>

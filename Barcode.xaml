@@ -1,0 +1,125 @@
+﻿<Window x:Class="DashBoard.Barcode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DashBoard"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Barcode" Height="750" Width="1200">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Re-Print Barcode" HorizontalAlignment="Center" FontSize="40"/>
+            </StackPanel>
+
+            <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,30" Name="root" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            </WrapPanel>
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Click="add" Content="+" x:Name="btnAdd" Width="100" Margin="10, 0"
+                Background="#4a3f35" Foreground="White" BorderBrush="#4a3f35"  FontSize="20" Padding="10,5"/>
+
+                <Button Click="remove" Content="-" x:Name="btnRemove" Width="100" Margin="10, 0"
+                Background="#4a3f35" Foreground="White" BorderBrush="#4a3f35"  FontSize="20" Padding="10,5"/>
+
+                <Button Click="genBarcode" Content="Print" x:Name="btnSubmit" Width="150" Margin="10, 0" 
+                Background="#4a3f35" Foreground="White" BorderBrush="#4a3f35" FontSize="20" Padding="10,5" />
+
+                <Button Click="Clear" Content="Clear" x:Name="btnClose" Width="150"   Margin="10, 0"
+                Background="#4a3f35" Foreground="White"  BorderBrush="#4a3f35" FontSize="20" Padding="10,5" />
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBox FontSize="20" Name="BarcodeType" DropDownClosed="BarcodeTypeChage" Padding="10" Width="200">
+                    <ComboBoxItem FontSize="20" Content="Select Barcode Type" Padding="10" IsSelected="True" IsEnabled="False"></ComboBoxItem>
+                    <ComboBoxItem FontSize="20" Content="Price Tag Only" Padding="10"></ComboBoxItem>
+                    <ComboBoxItem FontSize="20" Content="Price With Details" Padding="10"></ComboBoxItem>
+                </ComboBox>
+                <StackPanel x:Name="priceTagOnlyCheckList" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
+                    <CheckBox Content="Barcode" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Brand Name" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="MRP" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Company Address" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+                <StackPanel x:Name="priceTagWithDetailsCheckList" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
+                    <CheckBox Content="Barcode" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Brand Name" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Category" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Group" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Division" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Size" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Length" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Style Code" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="MRP" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox Content="Company Address" Margin="10px">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

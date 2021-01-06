@@ -1,0 +1,101 @@
+﻿<Window x:Class="BillDemo1.NewProductAttribute"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BillDemo1"
+        mc:Ignorable="d"
+        Title="NewProductAttribute" Height="450" Width="800">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="47" Margin="182,0,0,0" Width="436">
+            <TextBlock Name="title" FontSize="36" FontFamily="Agency FB" FontWeight="Bold">Add New Product Attributes</TextBlock>
+            <Separator   Width="513" Height="10" RenderTransformOrigin="0.5,0.5" ></Separator>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Category</TextBlock>
+            <ComboBox ItemsSource="{Binding}" FontSize="20" Name="category" Height="36" Cursor="Hand" >
+               
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Group Name (Ex:Men,Women,Kid)</TextBlock>
+            <TextBox Name="occupation" Padding="10 0" FontSize="20" Width="329" Height="36" ></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Size</TextBlock>
+            <ComboBox FontSize="20" Name="communication" Height="36" Cursor="Hand">
+                <ComboBoxItem Content="-Select-" IsSelected="True" IsEnabled="False"></ComboBoxItem>
+                <ComboBoxItem Content="SMS"></ComboBoxItem>
+                <ComboBoxItem Content="Email"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Division (Shirt,Pant,chudithar etc)</TextBlock>
+            <TextBox FontSize="20" Name="division" Padding="10 0" Width="329" Height="36" ></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Brand Name</TextBlock>
+            <TextBox Name="brandname" Padding="10 0" FontSize="20" Width="329" Height="36" ></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="74" Width="330">
+            <TextBlock Margin="5" Padding="10 0" FontSize="20">Added Date</TextBlock>
+            <DatePicker FontSize="20" Name="addeddate" Padding="10 0" Width="329" Height="36"></DatePicker>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74" Width="330">
+            <Button HorizontalAlignment="Left" FontSize="20" Click="Submit" VerticalAlignment="Center" Width="129" Height="36" HorizontalContentAlignment="Left" BorderBrush="#4a3f35"  Margin="10 0" Padding="10 0" Foreground="White" Cursor="Hand">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#4a3f35"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4a3f35"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style> Save
+            </Button>
+            <Button HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center" Width="129" Height="36" HorizontalContentAlignment="Left" BorderBrush="#4a3f35"  Margin="10 0" Padding="10 0" Foreground="White" Cursor="Hand">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#4a3f35"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4a3f35"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style> Cancel
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
